@@ -18,7 +18,7 @@ public class CarregaEstabelecimentos {
 	private static List<String> lista = new ArrayList<String>();
 
   //
-  // Fields
+  // Fieldss
   //
 
   
