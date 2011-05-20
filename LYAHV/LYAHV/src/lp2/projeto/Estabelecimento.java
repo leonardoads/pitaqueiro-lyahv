@@ -1,49 +1,33 @@
 package lp2.projeto;
 
 
-import java.util.*;
-
-
-/**
- * Class Estabelecimento
- */
 public class Estabelecimento {
-
-  //
-  // Fields
-  //
 
   private String nome = "null";
   private String endereco = "null";
   private TiposDeAlmocos tipoDeAlmoco;
-  
-  //
-  // Constructors
-  //
-  public Estabelecimento () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
+  public Estabelecimento (String nome, String endereco, TiposDeAlmocos tipoDeAlmoco) {
+	  this.nome = nome;
+	  this.endereco = endereco;
+	  this.tipoDeAlmoco = tipoDeAlmoco;
+  }
+ 
   /**
    * Set the value of nome
    * @param newVar the new value of nome
    */
-  private void setNome ( String newVar ) {
-    nome = newVar;
+ 
+  public void setNome ( String nome ) {
+    this.nome = nome;
   }
 
   /**
    * Get the value of nome
    * @return the value of nome
    */
-  private String getNome ( ) {
+ 
+  public String getNome() {
     return nome;
   }
 
@@ -51,15 +35,17 @@ public class Estabelecimento {
    * Set the value of endereco
    * @param newVar the new value of endereco
    */
-  private void setEndereco ( String newVar ) {
-    endereco = newVar;
+  
+  public void setEndereco ( String endereco ) {
+    this.endereco = endereco;
   }
 
   /**
    * Get the value of endereco
    * @return the value of endereco
    */
-  private String getEndereco ( ) {
+  
+  public String getEndereco () {
     return endereco;
   }
 
@@ -67,44 +53,27 @@ public class Estabelecimento {
    * Set the value of tipoDeAlmoco
    * @param newVar the new value of tipoDeAlmoco
    */
-  private void setTipoDeAlmoco ( TiposDeAlmocos newVar ) {
-    tipoDeAlmoco = newVar;
+  
+  public void setTipoDeAlmocos ( TiposDeAlmocos tipoDeAlmoco ) {
+    this.tipoDeAlmoco = tipoDeAlmoco;
   }
 
   /**
    * Get the value of tipoDeAlmoco
    * @return the value of tipoDeAlmoco
    */
-  private TiposDeAlmocos getTipoDeAlmoco ( ) {
+  
+  public TiposDeAlmocos getTipoDeAlmoco() {
     return tipoDeAlmoco;
   }
 
-  //
-  // Other methods
-  //
-
-  /**
-   * @return       String
-   */
-  public String getNome(  )
-  {
-  }
-
-
-  /**
-   * @return       String
-   */
-  public String getEndereco(  )
-  {
-  }
-
-
-  /**
-   * @return       TiposDeAlmocos
-   */
-  public TiposDeAlmocos getTipoDeAlmoco(  )
-  {
-  }
-
-
+@Override
+public String toString() {
+	return "Dados do lugar:" +
+			"\nNome:" + getNome()+
+			"\nEndereco:" + getEndereco()+
+			"\nTipo de Almoco:" + getTipoDeAlmoco();
 }
+}
+
+
