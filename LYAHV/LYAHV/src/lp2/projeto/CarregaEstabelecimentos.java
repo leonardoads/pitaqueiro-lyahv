@@ -71,7 +71,7 @@ public class CarregaEstabelecimentos {
 /**
  * @return       ListaDeEstabelecimentos
  */
-//  public static ListaDeEstabelecimentos carregaEstabelecimentos(  )
+//  public static List<Estabelecimentos> carregaEstabelecimentos(  )
 //  {
 //  }
 
