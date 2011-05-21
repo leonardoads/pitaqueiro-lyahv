@@ -7,7 +7,7 @@ import java.util.*;
  */
 class ListaUsuarios {
 
-	private List<Usuario> listaDeUsuarios;
+	private static List<Usuario> listaDeUsuarios;
 
 	public ListaUsuarios() {
 	};
@@ -18,8 +18,8 @@ class ListaUsuarios {
 	 * @param newVar
 	 *            the new value of listaDeUsuarios
 	 */
-	private void setListaDeUsuarios(List<Usuario> newVar) {
-		listaDeUsuarios = newVar;
+	public static void setListaDeUsuarios(List<Usuario> usuario) {
+		listaDeUsuarios = usuario;
 	}
 
 	/**
@@ -27,7 +27,7 @@ class ListaUsuarios {
 	 * 
 	 * @return the value of listaDeUsuarios
 	 */
-	private List<Usuario> getListaDeUsuarios() {
+	public static List<Usuario> getListaDeUsuarios() {
 		return listaDeUsuarios;
 	}
 
@@ -36,17 +36,28 @@ class ListaUsuarios {
 	//
 
 	/**
-	 * @return Usuario
+	 * @return the Usuario if it is successfully added in the list, otherwise
+	 *         returns null
 	 * @param usuario
 	 */
-	public Usuario adicionaUsuario(Usuario usuario) {
+	public static Usuario adicionaUsuario(Usuario usuario) {
+		if (listaDeUsuarios.add(usuario)){
+			return usuario;
+		}
+		return null;
 	}
 
 	/**
-	 * @return Usuario
+	 * @return 
+	 * 			the Usuario if it is successfully removed in the list, otherwise
+	 *         returns null
 	 * @param usuario
 	 */
-	public Usuario removeUsuario(Usuario usuario) {
+	public static Usuario removeUsuario(Usuario usuario) {
+		if (listaDeUsuarios.remove(usuario)){
+			return usuario;
+		}
+		return null;
 	}
 
 }
