@@ -15,6 +15,7 @@ public class Cadastro {
 	 */
 	public static Cadastro cadastrar(String nome, ListaDePreferencias listaDePreferencia){
 		if(nome != null && !ListaUsuarios.getListaDeUsuarios().contains(nome)){
+			System.out.println(nome+" "+ListaUsuarios.getListaDeUsuarios().contains(nome));
 			Cadastro cadastro = new Cadastro(nome, listaDePreferencia);
 			return cadastro;
 		}
