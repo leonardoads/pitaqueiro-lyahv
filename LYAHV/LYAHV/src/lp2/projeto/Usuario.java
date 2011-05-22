@@ -1,5 +1,7 @@
 package lp2.projeto;
 
+import java.util.Iterator;
+
 /**
  * Class Usuario
  */
@@ -49,9 +51,18 @@ public class Usuario {
 		return preferencias;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Nome = " + nome + " ,Preferencias = " + preferencias;
+		String prefere = "";
+		for (Iterator<Preferencias> iterator = preferencias.getListaDePreferecias().iterator(); iterator.hasNext();) {
+			Preferencias type = (Preferencias) iterator.next();
+			prefere += ";"+type.getValue()+" : "+type.getNome();
+			
+		}
+		return nome + ";" + prefere;
 	}
 
 	/*
