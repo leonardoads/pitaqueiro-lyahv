@@ -65,9 +65,7 @@ public class Usuario {
 		return nome + ";" + prefere;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -75,14 +73,10 @@ public class Usuario {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result
-				+ ((preferencias == null) ? 0 : preferencias.hashCode());
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -104,13 +98,9 @@ public class Usuario {
 		} else if (!nome.equals(other.nome)) {
 			return false;
 		}
-		if (preferencias == null) {
-			if (other.preferencias != null) {
-				return false;
-			}
-		} else if (!preferencias.equals(other.preferencias)) {
-			return false;
-		}
 		return true;
 	}
+
+	
+	
 }
