@@ -8,6 +8,7 @@ import java.util.*;
 public class ListaDePreferencias {
 
 	private List<Preferencias> listaDePreferencias;
+	private Preferencias[] preferencias = Preferencias.values();
 
 	public ListaDePreferencias() {
 		this.listaDePreferencias = new ArrayList<Preferencias>();
@@ -19,7 +20,7 @@ public class ListaDePreferencias {
 	 * @param newVar
 	 *            the new value of listaDePreferecias
 	 */
-	private void setListaDePreferecias(List<Preferencias> listaDePreferecias) {
+	public void setListaDePreferecias(List<Preferencias> listaDePreferecias) {
 		this.listaDePreferencias = listaDePreferecias;
 	}
 
@@ -28,8 +29,15 @@ public class ListaDePreferencias {
 	 * 
 	 * @return the value of listaDePreferecias
 	 */
-	private List<Preferencias> getListaDePreferecias() {
+	public List<Preferencias> getListaDePreferecias() {
 		return listaDePreferencias;
 	}
 
+	public void adicionaPreferencia(String nomePrefencia) {
+		for (int i = 0; i < preferencias.length; i++) {
+			if(preferencias[i].getNome().equals(nomePrefencia)){
+				listaDePreferencias.add(preferencias[i]);
+			}
+		}
+	}
 }
