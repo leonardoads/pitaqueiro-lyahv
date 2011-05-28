@@ -1,7 +1,5 @@
 package lp2.projeto;
 
-import java.util.Iterator;
-
 /**
  * Class Usuario
  */
@@ -11,6 +9,8 @@ public class Usuario {
 	private ListaDePreferencias preferencias;
 
 	public Usuario(String nome, ListaDePreferencias preferencias) {
+		this.nome = nome;
+		this.preferencias = preferencias;
 	};
 
 	/**
@@ -51,21 +51,14 @@ public class Usuario {
 		return preferencias;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
-		String prefere = "";
-		for (Iterator<Preferencias> iterator = preferencias.getListaDePreferecias().iterator(); iterator.hasNext();) {
-			Preferencias type = (Preferencias) iterator.next();
-			prefere += ";"+type.getValue()+" : "+type.getNome();
-			
-		}
-		return nome + ";" + prefere;
+		return "Nome = " + nome + " ,Preferencias = " + preferencias;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -73,10 +66,14 @@ public class Usuario {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result
+				+ ((preferencias == null) ? 0 : preferencias.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -98,9 +95,20 @@ public class Usuario {
 		} else if (!nome.equals(other.nome)) {
 			return false;
 		}
+		if (preferencias == null) {
+			if (other.preferencias != null) {
+				return false;
+			}
+		} else if (!preferencias.equals(other.preferencias)) {
+			return false;
+		}
 		return true;
 	}
-
-	
-	
+	public static void main(String[] args) {
+		ListaDePreferencias preferencia = new ListaDePreferencias();
+		preferencia.adicionaPreferencia(" Detesto");
+		System.out.println(preferencia);
+		Usuario us = new Usuario("a", preferencia);
+		System.out.println(us.getPreferencias());
+	}
 }
