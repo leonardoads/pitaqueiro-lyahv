@@ -9,26 +9,33 @@ import java.util.*;
  */
 public class ListaDeEstabelecimentos {
 
-  public List<Estabelecimento> listaDeEstabelacimentos;
-  
-  public ListaDeEstabelecimentos () { 
-	 listaDeEstabelacimentos = new ArrayList<Estabelecimento>(); 
-  }
-  
-  /**
-   * Set the value of listaDeEstabelacimentos
-   * @param newVar the new value of listaDeEstabelacimentos
-   */
-  public void setListaDeEstabelacimentos ( List<Estabelecimento> listaDeEstabelacimentos ) {
-    this.listaDeEstabelacimentos = listaDeEstabelacimentos;
-  }
+	public static List<Estabelecimento> listaDeEstabelecimentos = new ArrayList<Estabelecimento>(); 
 
-  /**
-   * Get the value of listaDeEstabelacimentos
-   * @return the value of listaDeEstabelacimentos
-   */
-  public List<Estabelecimento> getListaDeEstabelacimentos ( ) {
-    return listaDeEstabelacimentos;
-  }
-  
+	public ListaDeEstabelecimentos () { 
+		listaDeEstabelecimentos = new ArrayList<Estabelecimento>(); 
+
+	}
+
+	public static void adiciona(Estabelecimento estabelecimento){
+
+		listaDeEstabelecimentos.add(estabelecimento);
+		//System.out.println("adicionado");
+	}
+
+	/**
+	 * Set the value of listaDeEstabelecimentos
+	 * @param newVar the new value of listaDeEstabelecimentos
+	 */
+	public static void setListaDeEstabelacimentos ( List<Estabelecimento> novaListaDeEstabelacimentos ) {
+		listaDeEstabelecimentos = novaListaDeEstabelacimentos;
+	}
+
+	/**
+	 * Get the value of listaDeEstabelecimentos
+	 * @return the value of listaDeEstabelecimentos
+	 */
+	public static List<Estabelecimento> getListaDeEstabelecimentos ( ) {
+		return listaDeEstabelecimentos;
+	}
+
 }
