@@ -1,9 +1,7 @@
 package lp2.projeto;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +10,7 @@ import java.util.Map;
  */
 public class ListaDePopularidades {
 
-	private Map<Integer, List<Estabelecimento>> mapaPopularidade = new HashMap<Integer, List<Estabelecimento>>();
+	private static Map<Integer, List<Estabelecimento>> mapaPopularidade = new HashMap<Integer, List<Estabelecimento>>();
 
 	/**
 	 * Set the value of mapaPopularidade
@@ -20,7 +18,7 @@ public class ListaDePopularidades {
 	 * @param newVar
 	 *            the new value of mapaPopularidade
 	 */
-	private void setMapaPopularidade(HashMap mapaPopularidade) {
+	public void setMapaPopularidade(HashMap mapaPopularidade) {
 		this.mapaPopularidade = mapaPopularidade;
 	}
 
@@ -29,31 +27,34 @@ public class ListaDePopularidades {
 	 * 
 	 * @return the value of mapaPopularidade
 	 */
-	private Map getMapaPopularidade() {
+	public static Map<Integer, List<Estabelecimento>> getMapaPopularidade() {
 		return mapaPopularidade;
 	}
 
 	/**
 	 * @param mapEstabelecimentosOpnioes
 	 */
-	public void gerarMapa(MapaEstabelecimentosPreferencias mapaEstabelecimentosPreferencias) {
+	public static void gerarMapa(Map<Estabelecimento, List<Preferencias>> map) {
 		int popularidade = 0;
-		
-		for (Estabelecimento estabelecimento: mapaEstabelecimentosPreferencias.getMapa().keySet()) {
-			Iterator<Estabelecimento> it = mapaEstabelecimentosPreferencias.getMapa().get(estabelecimento).iterator();
-			while (it.hasNext()) {
-				
+		MapaEstabelecimentosPreferencias.transformaEmMapa();
+		for (Estabelecimento estabelecimento : MapaEstabelecimentosPreferencias
+				.getMapa().keySet()) {
+			System.out.println(MapaEstabelecimentosPreferencias
+					.getMapa().values());
+			System.out.println(MapaEstabelecimentosPreferencias
+					.getMapa().get(estabelecimento));
+			for (Preferencias preferencia : MapaEstabelecimentosPreferencias
+					.getMapa().get(estabelecimento)) {
+				popularidade += preferencia.getNumero();
+				System.out.println(popularidade);
 			}
-			popularidade = 
-			
-			
-			if (mapaEstabelecimentosPreferencias.getMapa().) {
-				
-			}
+			if (!mapaPopularidade.containsKey(popularidade)) {
+				mapaPopularidade.put(popularidade,
+						new ArrayList<Estabelecimento>());
+			} else
+				mapaPopularidade.get(popularidade).add(estabelecimento);
 		}
-			
-			
-		
+
 	}
 
 	/**
@@ -63,4 +64,12 @@ public class ListaDePopularidades {
 		return null;
 	}
 
+	public static void main(String[] args) {
+		CarregaEstabelecimentos
+		.carregaEstabelecimentos("lista_estabelecimentos_projeto_lp2.csv");
+		MapaEstabelecimentosPreferencias.transformaEmMapa();
+		gerarMapa(MapaEstabelecimentosPreferencias.transformaEmMapa());
+		System.out.println(getMapaPopularidade());
+
+	}
 }
