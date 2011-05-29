@@ -13,16 +13,7 @@ public class Usuario {
 		this.preferencias = preferencias;
 	};
 
-	/**
-	 * Set the value of nome
-	 * 
-	 * @param newVar
-	 *            the new value of nome
-	 */
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
+	
 	/**
 	 * Get the value of nome
 	 * 
@@ -104,11 +95,19 @@ public class Usuario {
 		}
 		return true;
 	}
-	public static void main(String[] args) {
-		ListaDePreferencias preferencia = new ListaDePreferencias();
-		preferencia.adicionaPreferencia(" Detesto");
-		System.out.println(preferencia);
-		Usuario us = new Usuario("a", preferencia);
-		System.out.println(us.getPreferencias());
+
+//	 public static void main(String[] args) {
+//	 ListaDePreferencias preferencia = new ListaDePreferencias();
+//	 preferencia.adicionaPreferencia(" Detesto");
+//	 preferencia.adicionaPreferencia(" Detesto");
+//
+//	 System.out.println(preferencia);
+//	 Usuario us = new Usuario("a", preferencia);
+//	 System.out.println(us);
+//	 }
+
+	public void adiciona(String nomePreferencia) {
+		preferencias.adicionaPreferencia(nomePreferencia);
+
 	}
 }
