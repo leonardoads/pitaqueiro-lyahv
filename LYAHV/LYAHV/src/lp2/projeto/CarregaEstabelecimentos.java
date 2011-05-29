@@ -1,12 +1,9 @@
 package lp2.projeto;
 
-
-
-
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,66 +11,71 @@ import java.util.List;
  */
 
 public class CarregaEstabelecimentos {
-
-	private static List<String> lista = new ArrayList<String>();
-
+	private static String arquivo = "Estabelecimentos.data";
+	
+	private static String caminhoArquivo = "src" + File.separator + "media"+ File.separator;
+		
 	//
-	// Fieldss
+	// Methods
 	//
+	// Gets and Sets
 
+	public static String getCaminhoArquivo() {
+		return caminhoArquivo;
+	}
+	
+	public static void setCaminhoArquivo(String caminhoArquivo) {
+		CarregaEstabelecimentos.caminhoArquivo = caminhoArquivo;
+	}
+	
+	public static void setArquivo(String arquivo) {
+		CarregaEstabelecimentos.arquivo = arquivo;
+	}
 
-	//
-	// Constructors
-	//
-	public CarregaEstabelecimentos () {
+	public static String getArquivo() {
+		return arquivo;
+	}
+	
+	/**
+	 * @return ListaDeEstabelecimentos
+	 */
+	public static List<Estabelecimento> carregaEstabelecimentos(String arquivo){
+		String[] linha;
 
-		String caminhoArquivo = "/home/yuri/pitaqueiro-lyahv/LYAHV/LYAHV/src/media/lista_estabelecimentos_projeto_lp2.csv";
 		try {
-			BufferedReader leitor = new BufferedReader(new FileReader(caminhoArquivo));
+			
+			BufferedReader leitor = new BufferedReader(new FileReader(caminhoArquivo+arquivo));
 			while(leitor.ready()){
-				lista.add(leitor.readLine());
+				linha = leitor.readLine().split(";");
+				try{
+					TiposDeAlmocos tipo_almoco;
+
+					for (int i = 0; i < TiposDeAlmocos.values().length; i++) {
+						if(linha[2].equalsIgnoreCase(TiposDeAlmocos.values()[i].getNome())){
+							String nome = linha[0];
+							
+							String endereco = linha[1];
+							
+							tipo_almoco = TiposDeAlmocos.values()[i];
+							
+							Estabelecimento estabelecimento = new Estabelecimento(nome, endereco,tipo_almoco);
+							//System.out.println(estabelecimento);
+							ListaDeEstabelecimentos.adiciona(estabelecimento);
+						}
+					}
+
+				}catch (Exception e) {
+					//System.out.println("arquivo em formatacao invalida");
+				}
 			}
-			lista.toString();
 
 		} catch (IOException e) {
+			System.out.println("nao carregou");
 		}
+		return ListaDeEstabelecimentos.getListaDeEstabelecimentos();
 	}
-	
-	public void lerEstabelecimentos(){
-		for (int i = 0; i < lista.size(); i++) {
-			System.out.println(lista.get(i));
-		}
-	}
-	
 	public static void main(String[] args) {
-		CarregaEstabelecimentos file = new CarregaEstabelecimentos();
-		file.lerEstabelecimentos();
-		
-		
+		System.out.println(carregaEstabelecimentos("lista_estabelecimentos_projeto_lp2.csv"));
 	}
-
-
-
-
-//
-// Methods
-//
-
-
-//
-// Accessor methods
-//
-
-//
-// Other methods
-//
-
-/**
- * @return       ListaDeEstabelecimentos
- */
-//  public static List<Estabelecimentos> carregaEstabelecimentos(  )
-//  {
-//  }
-
 
 }
