@@ -7,7 +7,7 @@ import java.util.*;
  */
 class ListaUsuarios {
 
-	private static List<Usuario> listaDeUsuarios;
+	private static List<Usuario> listaDeUsuarios  = new ArrayList<Usuario>();
 
 	public ListaUsuarios() {
 	};
@@ -41,9 +41,8 @@ class ListaUsuarios {
 	 * @param usuario
 	 */
 	public static Usuario adicionaUsuario(Usuario usuario) {
-		if (listaDeUsuarios.add(usuario)){
+		if(listaDeUsuarios.add(usuario))
 			return usuario;
-		}
 		return null;
 	}
 
